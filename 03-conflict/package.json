@@ -1,0 +1,27 @@
+{
+  "name": "03-conflict",
+  "packageManager": "yarn@4.3.1",
+  "scripts": {
+    "docker:up": "docker compose -f ../docker-compose.yml up -d",
+    "generate": "PRISMA_OUTPUT=../client yarn pnpify prisma generate",
+    "seed": "yarn generate && yarn pnpify prisma db seed",
+    "migrate:local": "yarn pnpify prisma migrate deploy",
+    "migrate:create": "yarn pnpify prisma migrate dev --create-only",
+    "db:cleanup": "yarn tsx prisma/cleanup.ts",
+    "db:reset": "yarn tsx prisma/reset.ts && yarn migrate:local"
+  },
+  "dependencies": {
+    "@prisma/client": "5.16.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@yarnpkg/pnpify": "^4.1.0",
+    "casual": "^1.6.2",
+    "prisma": "5.16.0",
+    "tsx": "^4.15.7"
+  },
+  "prisma": {
+    "schema": "./prisma",
+    "seed": "tsx prisma/seeds.ts"
+  }
+}
