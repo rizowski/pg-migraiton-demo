@@ -2,4 +2,9 @@ model Group {
   id    String @id @default(cuid())
   name  String @unique
   users User[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("groups")
 }
