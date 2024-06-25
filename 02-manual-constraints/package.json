@@ -7,7 +7,8 @@
     "seed": "yarn generate && yarn pnpify prisma db seed",
     "migrate:local": "yarn pnpify prisma migrate deploy",
     "migrate:create": "yarn pnpify prisma migrate dev --create-only",
-    "db:cleanup": "yarn tsx prisma/cleanup.ts"
+    "db:cleanup": "yarn tsx prisma/cleanup.ts",
+    "db:reset": "yarn tsx prisma/reset.ts && yarn migrate:local"
   },
   "dependencies": {
     "@prisma/client": "5.16.0"
