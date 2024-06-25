@@ -3,4 +3,5 @@ node_modules
 .yarn/unplugged
 .data
 migrations/*
-migrations/.keep
+!migrations/.keep
+!migrations/
