@@ -1,0 +1,11 @@
+model TheLegacyTableNoOneWantsToOwn {
+  theLegacyTableItemId Int @id @default(autoincrement())
+
+  entry  String @db.VarChar(255)
+  data   String @db.VarChar(255)
+  value  String @map("Values") @db.VarChar(255)
+  detail String @map("DEAD_USE_WHEN_HOPE_IS_LOST_detail") @db.VarChar(255)
+  item   String @map("info") @db.VarChar(255)
+
+  date String @db.VarChar(255)
+}

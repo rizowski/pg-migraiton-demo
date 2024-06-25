@@ -10,59 +10,19 @@ const manySample = (arr: any[], n: number) =>
     .map(() => sample(arr));
 
 (async () => {
-  await prisma.$queryRaw`truncate "_GroupToUser", app_access, groups, users`;
-  const usersToCreate = Array(15)
-    .fill(null)
-    .map(() => ({
-      email: faker.internet.email(),
-      firstName: faker.person.firstName(),
-      lastName: faker.person.lastName(),
-    }));
+  await prisma.$queryRaw`truncate "TheLegacyTableNoOneWantsToOwn"`;
 
-  const users = await prisma.user.createManyAndReturn({
-    data: usersToCreate,
+  await prisma.theLegacyTableNoOneWantsToOwn.createMany({
+    data: Array(5)
+      .fill(null)
+      .map(() => ({
+        data: faker.lorem.sentence(),
+        date: faker.date.recent().toISOString(),
+        detail: JSON.stringify({ foo: 'bar' }),
+        item: faker.lorem.word(),
+        entry: faker.lorem.sentence(),
+        value: faker.number.float().toString(),
+      })),
     skipDuplicates: true,
-  });
-
-  const groupsToCreate = Array(5)
-    .fill(null)
-    .map(() => ({
-      name: `${faker.word.adjective()} Group`,
-    }));
-
-  const groups = await prisma.group.createManyAndReturn({
-    data: groupsToCreate,
-    skipDuplicates: true,
-  });
-
-  const sampledUsers = manySample(users, 5);
-
-  await Promise.all(
-    sampledUsers.map(({ id }) => {
-      return prisma.user.update({
-        data: {
-          groups: {
-            connect: manySample(groups, 2).map(({ id }) => ({ id })),
-          },
-        },
-        where: {
-          id,
-        },
-      });
-    })
-  );
-
-  const userWithAccess = sample(users);
-
-  await prisma.appAccess.create({
-    data: {
-      app: 'MyApp',
-      tools: ['Fun Tool', 'Death', 'Taxes'],
-      user: {
-        connect: {
-          id: userWithAccess.id,
-        },
-      },
-    },
   });
 })();
