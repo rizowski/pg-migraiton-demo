@@ -18,9 +18,29 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"02-additions@workspace:02-additions":
+"02-additions@workspace:02-manual-constraints":
   version: 0.0.0-use.local
-  resolution: "02-additions@workspace:02-additions"
+  resolution: "02-additions@workspace:02-manual-constraints"
+  dependencies:
+    "@faker-js/faker": "npm:^8.4.1"
+    "@prisma/client": "npm:5.16.0"
+    "@yarnpkg/pnpify": "npm:^4.1.0"
+    casual: "npm:^1.6.2"
+    prisma: "npm:5.16.0"
+    tsx: "npm:^4.15.7"
+  languageName: unknown
+  linkType: soft
+
+"03-conflict@workspace:03-conflict":
+  version: 0.0.0-use.local
+  resolution: "03-conflict@workspace:03-conflict"
+  dependencies:
+    "@faker-js/faker": "npm:^8.4.1"
+    "@prisma/client": "npm:5.16.0"
+    "@yarnpkg/pnpify": "npm:^4.1.0"
+    casual: "npm:^1.6.2"
+    prisma: "npm:5.16.0"
+    tsx: "npm:^4.15.7"
   languageName: unknown
   linkType: soft
 
@@ -1610,6 +1630,12 @@ __metadata:
   checksum: 10c0/26c02b8d06f03206fc2ab8d16f19960f2ff9e81a658f831ecb656d8f17d9edc799e8364b1f4a7873e89d9702dff96204be0fa26fe4181f6843f040f819dac4be
   languageName: node
   linkType: hard
+
+"prisma-client-8722087e305aa0e335b30efe3661246d412cbbcde117f82f7f7dc1e9180be70e@workspace:03-conflict/client":
+  version: 0.0.0-use.local
+  resolution: "prisma-client-8722087e305aa0e335b30efe3661246d412cbbcde117f82f7f7dc1e9180be70e@workspace:03-conflict/client"
+  languageName: unknown
+  linkType: soft
 
 "prisma-client-e3c2ab0e18a26fd8ae96db4e9205b12c8dff5a4c98d56a768ca6fdef8d263a89@workspace:01-initial/client":
   version: 0.0.0-use.local
